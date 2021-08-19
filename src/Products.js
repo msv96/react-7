@@ -1,4 +1,4 @@
-import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { faDownload, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -42,18 +42,25 @@ function Products() {
 
   return (
     <div>
-      <h1 className="h3 mb-2 text-gray-800">Products</h1>
-      <Link to="/product/create" className="btn btn-primary shadow-sm mb-3">
-        <FontAwesomeIcon
-          icon={faDownload}
-          size="sm"
-          className="text-white-50"
-        ></FontAwesomeIcon>{" "}
-        Create Product
-      </Link>
+      <div className="text-center">
+        <h1 className="h2 mb-2 text-gray-800">Products</h1>
+      </div>
+      <div className="d-md-flex justify-content-between align-items-center">
+        <Link to="/product/create" className="btn btn-lg btn-success shadow-sm p-2 mb-5">
+          <FontAwesomeIcon
+            icon={faDownload}
+            className="text-white-50"
+          ></FontAwesomeIcon>
+          <span className="pl-2">Create Product</span>
+        </Link>
+        <Link to="/" className="btn btn-lg btn-outline-success p-3 mb-5">
+          <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>
+          <span className="pl-3">Home</span>
+        </Link>
+      </div>
       <div className="card shadow mb-4">
         <div className="card-header py-3">
-          <h6 className="m-0 font-weight-bold text-primary">
+          <h6 className="m-0 font-weight-bold text-success">
             List of Products
           </h6>
         </div>

@@ -45,38 +45,36 @@ function EditProduct(props) {
         <h1 className="h3 mb-0 text-gray-800">Update Product</h1>
       </div>
       <form onSubmit={handleSubmit}>
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-6">
-              <label>Product Name</label>
-              <input
-                type="text"
-                className="form-control"
-                value={productName}
-                onChange={(el) => {
-                  setProductName(el.target.value);
-                }}
-              />
-            </div>
-            <div className="col-lg-6">
-              <label>Price</label>
-              <input
-                type="text"
-                className="form-control"
-                value={price}
-                onChange={(el) => {
-                  setPrice(el.target.value);
-                }}
-              />
-            </div>
-            <div className="col-lg-12">
-              <input
-                type="submit"
-                value="Update"
-                className="btn btn-primary mt-3"
-                disabled={loading}
-              />
-            </div>
+        <div className="row">
+          <div className="col-lg-6">
+            <label>Product Name</label>
+            <input
+              type="text"
+              className="form-control"
+              value={productName}
+              onChange={(el) => {
+                setProductName(el.target.value);
+              }}
+            />
+          </div>
+          <div className="col-lg-6">
+            <label>Price</label>
+            <input
+              type="text"
+              className="form-control"
+              value={price}
+              onChange={(el) => {
+                setPrice(el.target.value);
+              }}
+            />
+          </div>
+          <div className="col-lg-12">
+            <input
+              type="submit"
+              value="Update"
+              className="btn btn-success mt-3"
+              disabled={loading}
+            />
           </div>
         </div>
       </form>
