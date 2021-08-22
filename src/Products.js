@@ -1,4 +1,4 @@
-import { faDownload, faHome } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -46,15 +46,12 @@ function Products() {
         <h1 className="h2 mb-2 text-gray-800">Products</h1>
       </div>
       <div className="d-md-flex justify-content-between align-items-center">
-        <Link to="/product/create" className="btn btn-lg btn-success shadow-sm p-2 mb-5">
-          <FontAwesomeIcon
-            icon={faDownload}
-            className="text-white-50"
-          ></FontAwesomeIcon>
+        <Link to="/create-product" className="btn btn-lg btn-success p-2 mb-5">
+          <FontAwesomeIcon key="js99" icon={faPlus}></FontAwesomeIcon>
           <span className="pl-2">Create Product</span>
         </Link>
         <Link to="/" className="btn btn-lg btn-outline-success p-3 mb-5">
-          <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>
+          <FontAwesomeIcon key="hd33" icon={faHome}></FontAwesomeIcon>
           <span className="pl-3">Home</span>
         </Link>
       </div>
@@ -76,7 +73,7 @@ function Products() {
                 cellSpacing="0"
               >
                 <thead>
-                  <tr>
+                  <tr key="hdy7w12">
                     <th>ID</th>
                     <th>Product Name</th>
                     <th>Price</th>
@@ -84,15 +81,15 @@ function Products() {
                   </tr>
                 </thead>
                 <tbody>
-                  {productList.map((el) => {
+                  {productList.map((el, index) => {
                     return (
-                      <tr>
+                      <tr key={index * 5 + 152}>
                         <td>{el.id}</td>
                         <td>{el.product_name}</td>
                         <td>$ {el.price}</td>
                         <td>
                           <Link
-                            to={`/product/edit/${el.id}`}
+                            to={`/edit-product/${el.id}`}
                             className="btn btn-info"
                           >
                             Update

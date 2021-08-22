@@ -1,4 +1,4 @@
-import { faWrench } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faWrench } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -11,8 +11,12 @@ function Dashboard() {
       </div>
       <div className="d-md-flex justify-content-center">
         <Link to="/product" className="btn btn-lg btn-outline-success p-3 m-5">
-          <FontAwesomeIcon icon={faWrench}></FontAwesomeIcon>
+          <FontAwesomeIcon key="sd88" icon={faWrench}></FontAwesomeIcon>
           <span> Products</span>
+        </Link>
+        <Link to="/create-product" className="btn btn-lg btn-success p-3 m-5">
+          <FontAwesomeIcon key="hh44" icon={faPlus}></FontAwesomeIcon>
+          <span> Create Product</span>
         </Link>
       </div>
     </div>
