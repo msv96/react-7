@@ -7,14 +7,12 @@ function EditProduct(props) {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
   const formik = useFormik({
-    initialValues: {
-      productName: "",
-      price: "",
-    },
     validate: (values) => {
       const errors = {};
-      if (!values.productName || !values.price) {
-        errors.productName = "Required";
+      if (!values.product_name) {
+        errors.product_name = "Required";
+      }
+      if (!values.price) {
         errors.price = "Required";
       }
       return errors;
@@ -24,7 +22,7 @@ function EditProduct(props) {
         setLoading(true);
         await axios.put(
           `https://60f460de3cb0870017a8a216.mockapi.io/products/${props.match.params.id}`,
-          { productName: values.productName, price: values.price }
+          { product_name: values.product_name, price: values.price }
         );
         setLoading(false);
       } catch (error) {
@@ -38,11 +36,11 @@ function EditProduct(props) {
   useEffect(() => {
     let fetchData = async () => {
       try {
-        let products = await axios.get(
+        let product = await axios.get(
           `https://60f460de3cb0870017a8a216.mockapi.io/products/${props.match.params.id}`
         );
-        formik.values.productName = products.data.product_name;
-        formik.values.price = products.data.price;
+        formik.setFieldValue("product_name", product.data.product_name);
+        formik.setFieldValue("price", product.data.price);
       } catch (error) {
         console.log(error);
       }
@@ -58,36 +56,41 @@ function EditProduct(props) {
       <form onSubmit={formik.handleSubmit}>
         <div className="row">
           <div className="col-lg-6">
-            <label>Product Name</label>
+            <label htmlFor="product_name">Product Name</label>
             <input
+              id="product_name"
+              name="product_name"
               type="text"
               className="form-control"
-              value={formik.values.productName}
-              onChange={e => e.target.value}
+              value={formik.values.product_name}
+              onChange={formik.handleChange}
             />
-            {formik.errors.productName ? (
-              <span className="text-danger">{formik.errors.productName}</span>
+            {formik.errors.product_name ? (
+              <span className="text-danger">{formik.errors.product_name}</span>
             ) : null}
           </div>
           <div className="col-lg-6">
-            <label>Price</label>
+            <label htmlFor="price">Price</label>
             <input
+              id="price"
+              name="price"
               type="text"
               className="form-control"
               value={formik.values.price}
-              onChange={e => e.target.value}
+              onChange={formik.handleChange}
             />
-            {formik.errors.productName ? (
-              <span className="text-danger">{formik.errors.productName}</span>
+            {formik.errors.price ? (
+              <span className="text-danger">{formik.errors.price}</span>
             ) : null}
           </div>
           <div className="col-lg-1">
-            <input
+            <button
               type="submit"
-              value="Update"
               className="btn btn-success mt-3"
               disabled={loading}
-            />
+            >
+              Edit
+            </button>
           </div>
           <div className="col-lg-1">
             <Link to="/product">

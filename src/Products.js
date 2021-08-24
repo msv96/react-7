@@ -92,7 +92,7 @@ function Products() {
                             to={`/edit-product/${el.id}`}
                             className="btn btn-info"
                           >
-                            Update
+                            Edit
                           </Link>
                           <button
                             className="btn btn-danger ml-3"
