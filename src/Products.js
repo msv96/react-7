@@ -45,14 +45,14 @@ function Products() {
       <div className="text-center">
         <h1 className="h2 mb-2 text-gray-800">Products</h1>
       </div>
-      <div className="d-md-flex justify-content-between align-items-center">
-        <Link to="/create-product" className="btn btn-lg btn-success p-2 mb-5">
+      <div className="d-md-flex justify-content-center">
+        <Link to="/" className="btn btn-lg btn-outline-success p-2 m-5">
+          <FontAwesomeIcon key="hd33" icon={faHome}></FontAwesomeIcon>
+          <span className="pl-2">Home</span>
+        </Link>
+        <Link to="/create-product" className="btn btn-lg btn-success p-2 m-5">
           <FontAwesomeIcon key="js99" icon={faPlus}></FontAwesomeIcon>
           <span className="pl-2">Create Product</span>
-        </Link>
-        <Link to="/" className="btn btn-lg btn-outline-success p-3 mb-5">
-          <FontAwesomeIcon key="hd33" icon={faHome}></FontAwesomeIcon>
-          <span className="pl-3">Home</span>
         </Link>
       </div>
       <div className="card shadow mb-4">
