@@ -7,6 +7,10 @@ function EditProduct(props) {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
   const formik = useFormik({
+    initialValues: {
+      product_name: "",
+      price: "",
+    },
     validate: (values) => {
       const errors = {};
       if (!values.product_name) {
@@ -46,7 +50,8 @@ function EditProduct(props) {
       }
     };
     fetchData();
-  }, [props, formik]);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div>
