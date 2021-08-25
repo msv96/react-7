@@ -1,0 +1,16 @@
+td div.wrap {
+    animation: skeleton-loading 1s linear infinite alternate;
+    width: 50%;
+    height: 20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-color: hsl(200, 20%, 75%);
+    }
+    100% {
+        background-color: hsl(200, 20%, 90%);
+    }
+}

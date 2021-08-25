@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import "./skeleton.css";
 
 function Products() {
   const [productList, setProductList] = useState([]);
@@ -63,52 +64,65 @@ function Products() {
         </div>
         <div className="card-body">
           <div className="table-responsive">
-            {loading ? (
-              <h2>Loading...</h2>
-            ) : (
-              <table
-                className="table table-bordered"
-                id="dataTable"
-                width="100%"
-                cellSpacing="0"
-              >
-                <thead>
-                  <tr key="hdy7w12">
-                    <th>ID</th>
-                    <th>Product Name</th>
-                    <th>Price</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {productList.map((el, index) => {
-                    return (
-                      <tr key={index * 5 + 152}>
-                        <td>{el.id}</td>
-                        <td>{el.product_name}</td>
-                        <td>$ {el.price}</td>
-                        <td>
-                          <Link
-                            to={`/edit-product/${el.id}`}
-                            className="btn btn-info"
-                          >
-                            Edit
-                          </Link>
-                          <button
-                            className="btn btn-danger ml-3"
-                            onClick={() => {
-                              handleDelete(el.id);
-                            }}
-                          >
-                            Delete
-                          </button>
+            <table
+              className="table table-bordered"
+              id="dataTable"
+              width="100%"
+              cellSpacing="0"
+            >
+              <thead>
+                <tr key="hdy7w12">
+                  <th>ID</th>
+                  <th>Product Name</th>
+                  <th>Price</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {loading
+                  ? [...Array(20)].map((e, index) => (
+                      <tr key={index * 9}>
+                        <td className="skeleton">
+                          <div className="wrap"></div>
+                        </td>
+                        <td className="skeleton">
+                          <div className="wrap"></div>
+                        </td>
+                        <td className="skeleton">
+                          <div className="wrap"></div>
+                        </td>
+                        <td className="skeleton">
+                          <div className="wrap"></div>
                         </td>
                       </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            )}
+                    ))
+                  : productList.map((el, index) => {
+                      return (
+                        <tr key={index * 5 + 152}>
+                          <td>{el.id}</td>
+                          <td>{el.product_name}</td>
+                          <td>$ {el.price}</td>
+                          <td>
+                            <Link
+                              to={`/edit-product/${el.id}`}
+                              className="btn btn-info"
+                            >
+                              Edit
+                            </Link>
+                            <button
+                              className="btn btn-danger ml-3"
+                              onClick={() => {
+                                handleDelete(el.id);
+                              }}
+                            >
+                              Delete
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
