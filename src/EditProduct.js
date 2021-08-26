@@ -50,7 +50,6 @@ function EditProduct(props) {
       }
     };
     fetchData();
-    // eslint-disable-next-line
   }, []);
 
   return (
