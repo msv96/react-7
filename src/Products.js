@@ -81,7 +81,7 @@ function Products() {
               <tbody>
                 {loading
                   ? [...Array(20)].map((e, index) => (
-                      <tr key={index * 9}>
+                      <tr key={index * 9 + e}>
                         <td className="skeleton">
                           <div className="wrap"></div>
                         </td>
